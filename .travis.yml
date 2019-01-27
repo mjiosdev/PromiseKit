@@ -4,9 +4,11 @@ branches:
     - v4
     - v7
     - legacy-1.x
+    - /^\d+\.\d+\.\d+$/
 stages:
   - name: pretest
   - name: lint
+    if: NOT branch =~ ^\d+\.\d+\.\d+$
   - name: compile
     if: type != push OR branch =~ /^\d+\.\d+\.\d+$/
   - name: test
